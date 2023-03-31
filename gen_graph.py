@@ -92,17 +92,33 @@ def left_points(max_points):
 
 
 def main():
-    coordgen = left_points(40)
+    def add_edge(na, nb):
+        """Add an edge in graph 'g'."""
+        if na in g:
+            if nb not in g[na]:
+                g[na].append(nb)
+        else:
+            g[na] = [nb]
+    # end add_edge
+
+    g = {}
+    coordgen = left_points(4)
     while True:
         try:
             coords = next(coordgen)
-            print(f'{coords}')
-            for point in hex_points(coords):
-                print(f'    {point[0]}, {point[1]}')
             for edge in hex_edges(coords):
-                print(f'  {edge[0]}--{edge[1]}')
+                assert len(edge) == 2
+                add_edge(edge[0], edge[1])
+                add_edge(edge[1], edge[0])
         except Exception:
-            sys.exit(0)
+            break
+
+    for na, blist in g.items():
+        print(f'from {na}:')
+        for nb in blist:
+            print(f'  {na}->{nb}')
+
+    print('finis.')
 
 
 if __name__ == '__main__':
