@@ -5,23 +5,23 @@
 import sys
 
 
-def hex_points(left_point):
-    """Return a list of a hexagon's vertex coordinates, given the coordinates of its 'left point'.
+def hex_points(key_point):
+    """Return a list of a hexagon's vertex coordinates, given the coordinates of its 'key point'.
     """
-    lpx = left_point[0]
-    lpy = left_point[1]
-    return [(lpx, lpy),
-      (lpx+1, lpy+1),
-      (lpx+2, lpy+1),
-      (lpx+3, lpy),
-      (lpx+2, lpy-1),
-      (lpx+1, lpy-1)
+    kpx = key_point[0]
+    kpy = key_point[1]
+    return [(kpx, kpy),
+      (kpx+1, kpy+1),
+      (kpx+2, kpy+1),
+      (kpx+3, kpy),
+      (kpx+2, kpy-1),
+      (kpx+1, kpy-1)
     ]
 
 
-def hex_edges(left_point):
-    """Return a list of the 'left_point' hexagon's edges."""
-    nodes = hex_points(left_point)
+def hex_edges(key_point):
+    """Return a list of the 'key_point' hexagon's edges."""
+    nodes = hex_points(key_point)
     edges = []
     for i in range(5):
         edges.append([nodes[i], nodes[i+1]])
@@ -65,8 +65,8 @@ def spiral_points():
         ymax += 1
 
 
-def left_points(max_points):
-    """Generate hexagon "left points" spiraling out from (0, 1).
+def key_points(max_points):
+    """Generate hexagon "key points" spiraling out from (0, 1).
 
     Generate coordinates for the leftmost vertexes of hexagons that
     tile a plane. Filter a generated "spiral-out" sequence of
@@ -102,7 +102,7 @@ def main():
     # end add_edge
 
     g = {}
-    coordgen = left_points(4)
+    coordgen = key_points(4)
     while True:
         try:
             coords = next(coordgen)
