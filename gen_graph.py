@@ -6,16 +6,29 @@ import sys
 
 
 def hex_points(left_point):
-    """Generate a hexagon's vertex coordinates from the coordinates of its 'left point'.
+    """Return a list of a hexagon's vertex coordinates, given the coordinates of its 'left point'.
     """
     lpx = left_point[0]
     lpy = left_point[1]
-    yield (lpx, lpy)
-    yield (lpx+1, lpy+1)
-    yield (lpx+2, lpy+1)
-    yield (lpx+3, lpy)
-    yield (lpx+2, lpy-1)
-    yield (lpx+1, lpy-1)
+    return [(lpx, lpy),
+      (lpx+1, lpy+1),
+      (lpx+2, lpy+1),
+      (lpx+3, lpy),
+      (lpx+2, lpy-1),
+      (lpx+1, lpy-1)
+    ]
+
+
+def hex_edges(left_point):
+    """Return a list of the 'left_point' hexagon's edges."""
+    nodes = hex_points(left_point)
+    edges = []
+    for i in range(5):
+        edges.append([nodes[i], nodes[i+1]])
+        edges.append([nodes[i+1], nodes[i]])
+    edges.append([nodes[5], nodes[0]])
+    edges.append([nodes[0], nodes[5]])
+    return edges
 
 
 def spiral_points():
@@ -86,6 +99,8 @@ def main():
             print(f'{coords}')
             for point in hex_points(coords):
                 print(f'    {point[0]}, {point[1]}')
+            for edge in hex_edges(coords):
+                print(f'  {edge[0]}--{edge[1]}')
         except Exception:
             sys.exit(0)
 
