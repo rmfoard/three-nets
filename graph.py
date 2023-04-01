@@ -44,11 +44,9 @@ class Graph (object):
         """Return a list of the 'key_point' hexagon's edges."""
         nodes = self.hex_points(key_point)
         edges = []
-        for i in range(5):
-            edges.append([nodes[i], nodes[i+1]])
-            edges.append([nodes[i+1], nodes[i]])
-        edges.append([nodes[5], nodes[0]])
-        edges.append([nodes[0], nodes[5]])
+        for i in range(6):
+            edges.append([nodes[i], nodes[(i+1) % 6]])
+            edges.append([nodes[(i+1) % 6], nodes[i]])
         return edges
 
 
