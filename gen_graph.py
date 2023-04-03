@@ -16,6 +16,8 @@ def main():
         for nb in blist:
             print(f'  {na}->{nb}')
 
+    dg = DrawGraph(graph_object)
+
     print('finis.')
 
 

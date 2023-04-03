@@ -1,5 +1,6 @@
 """draw_graph
 """
+from graphics import GraphWin
 
 
 class DrawGraph (object):
