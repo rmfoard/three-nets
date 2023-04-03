@@ -22,11 +22,15 @@ class Graph (object):
                 add_edge(edge[0], edge[1])
                 add_edge(edge[1], edge[0])
 
-        # Add self-loops to border nodes with only two incident edges.
+        # Add self-loops to border nodes with only two incident edges and
+        # set all node colors to white (0).
+        self.colors = {}
         for a_node, b_nodes in self.edges.items():
+            self.colors[a_node] = 0  # white
             assert len(b_nodes) == 2 or len(b_nodes) == 3
             if len(b_nodes) == 2:
                 b_nodes.append(a_node)
+        # Set all nodes to white (0).
 
 
     def hex_points(self, key_point):
