@@ -15,6 +15,7 @@ class Graph (object):
         # end add_edge
 
         # Create mirrored edges, hexagon-wise.
+        self.nr_key_points = nr_key_points
         self.edges = {}
         for coords in self.key_points(nr_key_points):
             for edge in self.hex_edges(coords):
@@ -30,7 +31,15 @@ class Graph (object):
             assert len(b_nodes) == 2 or len(b_nodes) == 3
             if len(b_nodes) == 2:
                 b_nodes.append(a_node)
-        # Set all nodes to white (0).
+
+
+    def all_points(self):
+        checklist = {}
+        for kp in self.key_points(self.nr_key_points):
+            for pt in self.hex_points(kp):
+                if pt not in checklist:
+                    checklist[kp] = True
+                    yield pt
 
 
     def hex_points(self, key_point):
