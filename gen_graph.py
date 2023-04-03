@@ -1,10 +1,14 @@
 """gen_graph
 """
+import sys
+
 from graph import Graph
 
 
 def main():
-    graph_object = Graph(10)
+    print(f'gen_graph  v0.0  03Apr2023', file=sys.stderr)
+
+    graph_object = Graph(6)
     edges = graph_object.edges
 
     for na, blist in edges.items():

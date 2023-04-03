@@ -14,12 +14,19 @@ class Graph (object):
                 self.edges[na] = [nb]
         # end add_edge
 
+        # Create mirrored edges, hexagon-wise.
         self.edges = {}
         for coords in self.key_points(nr_key_points):
             for edge in self.hex_edges(coords):
                 assert len(edge) == 2
                 add_edge(edge[0], edge[1])
                 add_edge(edge[1], edge[0])
+
+        # Add self-loops to border nodes with only two incident edges.
+        for a_node, b_nodes in self.edges.items():
+            assert len(b_nodes) == 2 or len(b_nodes) == 3
+            if len(b_nodes) == 2:
+                b_nodes.append(a_node)
 
 
     def hex_points(self, key_point):
