@@ -5,9 +5,9 @@ from graph import Graph
 
 def main():
     graph_object = Graph(10)
-    g = graph_object.g
+    edges = graph_object.edges
 
-    for na, blist in g.items():
+    for na, blist in edges.items():
         print(f'from {na}:')
         for nb in blist:
             print(f'  {na}->{nb}')

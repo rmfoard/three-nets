@@ -6,15 +6,15 @@ class Graph (object):
     def __init__(self, nr_key_points):
 
         def add_edge(na, nb):
-            """Add an edge in graph 'g'."""
-            if na in self.g:
-                if nb not in self.g[na]:
-                    self.g[na].append(nb)
+            """Add an edge in 'edges'."""
+            if na in self.edges:
+                if nb not in self.edges[na]:
+                    self.edges[na].append(nb)
             else:
-                self.g[na] = [nb]
+                self.edges[na] = [nb]
         # end add_edge
 
-        self.g = {}
+        self.edges = {}
         for coords in self.key_points(nr_key_points):
             for edge in self.hex_edges(coords):
                 assert len(edge) == 2
