@@ -15,16 +15,12 @@ class Graph (object):
         # end add_edge
 
         self.g = {}
-        coordgen = self.key_points(nr_key_points)
-        while True:
-            try:
-                coords = next(coordgen)
-                for edge in self.hex_edges(coords):
-                    assert len(edge) == 2
-                    add_edge(edge[0], edge[1])
-                    add_edge(edge[1], edge[0])
-            except Exception:
-                break
+        for coords in self.key_points(nr_key_points):
+            for edge in self.hex_edges(coords):
+                assert len(edge) == 2
+                add_edge(edge[0], edge[1])
+                add_edge(edge[1], edge[0])
+
 
     def hex_points(self, key_point):
         """Return a list of a hexagon's vertex coordinates, given the coordinates of its 'key point'.
