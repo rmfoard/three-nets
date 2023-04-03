@@ -3,12 +3,13 @@
 import sys
 
 from graph import Graph
+from drawgraph import DrawGraph
 
 
 def main():
     print(f'gen_graph  v0.0  03Apr2023', file=sys.stderr)
 
-    graph_object = Graph(6)
+    graph_object = Graph(2048)
     edges = graph_object.edges
 
     for na, blist in edges.items():
