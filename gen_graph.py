@@ -8,12 +8,21 @@ from drawgraph import DrawGraph
 
 def main():
     if len(sys.argv) != 2:
-        print(f'usage: {sys.argv[0]} <rule>')
+        print(f'usage: {sys.argv[0]} <rule>', file=sys.stderr)
         sys.exit(1)
 
     print(f'gen_graph  v0.0  03Apr2023', file=sys.stderr)
 
-    rule = [0, 1, 1, 0, 1]
+    rule_int = int(sys.argv[1])
+    assert rule_int < 32
+    rule = [
+        1 if (rule_int << 4) & 1 else 0,
+        1 if (rule_int << 3) & 1 else 0,
+        1 if (rule_int << 2) & 1 else 0,
+        1 if (rule_int << 1) & 1 else 0,
+        1 if (rule_int << 0) & 1 else 0,
+    ]
+    print(f'rule {rule_int}: {rule}', file=sys.stderr)
 
     graph_object = Graph(512)
     edges = graph_object.edges
