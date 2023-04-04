@@ -5,15 +5,15 @@ from graphics import GraphWin, Point, Circle
 
 class DrawGraph (object):
 
-    def __init__(self, graph):
+    def __init__(self, graph, title):
         self.graph = graph
         self.edges = graph.edges
         self.colors = graph.colors
-        self.x_expansion = 6
-        self.y_expansion = 6
+        self.x_expansion = 4
+        self.y_expansion = 4
         self.node_radius = 2
 
-        gw = GraphWin("Graph Title", 800, 800)
+        gw = GraphWin(title, 800, 800)
         gw.setCoords(-400, -400, 400, 400)
 
         for pt in graph.all_hex_points():
@@ -24,6 +24,6 @@ class DrawGraph (object):
                 c.setFill('green')
             c.draw(gw)
 
-        gw.getMouse()
+        #gw.getMouse()
         gw.close()
         del gw
