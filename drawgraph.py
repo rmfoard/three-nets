@@ -25,3 +25,5 @@ class DrawGraph (object):
             c.draw(gw)
 
         gw.getMouse()
+        gw.close()
+        del gw
