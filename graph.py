@@ -33,7 +33,8 @@ class Graph (object):
                 b_nodes.append(a_node)
 
 
-    def all_points(self):
+    def all_hex_points(self):
+        """Generate all points lying on hexagons."""
         checklist = {}
         for kp in self.key_points(self.nr_key_points):
             for pt in self.hex_points(kp):
