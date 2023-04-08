@@ -44,9 +44,11 @@ def main():
         for pt in graph_object.all_hex_points():
             neighbor_sum = colors[pt] + colors[edges[pt][0]] + colors[edges[pt][1]] + colors[edges[pt][2]]
             next_colors[pt] = rule[neighbor_sum]
-        dg = DrawGraph(next_graph_object, f'Machine hex4 rule {rule_int} iter {iter_nr}')
-        iter_nr += 1
+        if (iter_nr % 10) == 0:
+            dg = DrawGraph(next_graph_object, f'Machine hex4 rule {rule_int} iter {iter_nr}')
+            del dg
         del graph_object
+        iter_nr += 1
         graph_object = next_graph_object
         edges = graph_object.edges
         colors = graph_object.colors
