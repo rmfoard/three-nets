@@ -1,9 +1,9 @@
-"""gen_graph
+"""gen_topo_graph
 """
 from random import random
 import sys
 
-from geom_graph import GeomGraph
+from topo_graph import TopoGraph
 from drawgraph import DrawGraph
 
 
@@ -12,7 +12,7 @@ def main():
         print(f'usage: {sys.argv[0]} <rule>', file=sys.stderr)
         sys.exit(1)
 
-    print(f'gen_graph  v0.0  03Apr2023', file=sys.stderr)
+    print(f'gen_topo_graph  v0.1  03Apr2023', file=sys.stderr)
 
     rule_int = int(sys.argv[1])
     assert rule_int < 32 and rule_int > 0
@@ -25,28 +25,29 @@ def main():
     ]
     print(f'rule {rule_int}: {rule}', file=sys.stderr)
 
-    graph_object = GeomGraph(2048)
+    graph_object = TopoGraph(7)
     edges = graph_object.edges
     colors = graph_object.colors
 
     # Initialize the starting graph.
-    #colors[(0, 1)] = 1
-    colors[(2, 2)] = 1
-    colors[(2, 0)] = 1
-    colors[(1, 1)] = 1
-    #for pt in graph_object.all_hex_points():
+    colors[(0, 0, 0)] = 1
+    colors[(2, 2, 0)] = 1
+    #for pt in graph_object.all_points():
     #    colors[pt] = 1 if random() > 0.5 else 0
 
     iter_nr = 0
     dg = DrawGraph(graph_object, f'Machine hex4 rule {rule_int} iter {iter_nr}')
+    ####
+    sys.exit(0)
+    ####
 
     # Run the machine.
     while True:
         # Create the next generation.
-        next_graph_object = GeomGraph(2048)
+        next_graph_object = TopoGraph(2048)
         next_edges = next_graph_object.edges
         next_colors = next_graph_object.colors
-        for pt in graph_object.all_hex_points():
+        for pt in graph_object.all_points():
             neighbor_sum = colors[pt] + colors[edges[pt][0]] + colors[edges[pt][1]] + colors[edges[pt][2]]
             next_colors[pt] = rule[neighbor_sum]
         if (iter_nr % 1) == 0:

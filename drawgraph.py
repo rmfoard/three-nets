@@ -16,7 +16,7 @@ class DrawGraph (object):
         gw = GraphWin(title, 800, 800)
         gw.setCoords(-400, -400, 400, 400)
 
-        for pt in graph.all_hex_points():
+        for pt in graph.all_nodes():
             x = pt[0] * self.x_expansion
             y = pt[1] * self.y_expansion
             c = Circle(Point(x, y), self.node_radius)
