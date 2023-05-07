@@ -31,11 +31,11 @@ def main():
 
     # Initialize the starting graph.
     #colors[(0, 1)] = 1
-    #colors[(2, 2)] = 1
-    #colors[(2, 0)] = 1
-    #colors[(1, 1)] = 1
-    for pt in graph_object.all_hex_points():
-        colors[pt] = 1 if random() > 0.5 else 0
+    colors[(2, 2)] = 1
+    colors[(2, 0)] = 1
+    colors[(1, 1)] = 1
+    #for pt in graph_object.all_hex_points():
+    #    colors[pt] = 1 if random() > 0.5 else 0
 
     iter_nr = 0
     dg = DrawGraph(graph_object, f'Machine hex4 rule {rule_int} iter {iter_nr}')
