@@ -27,3 +27,11 @@ class DrawGraph (object):
         #gw.getMouse()
         gw.close()
         del gw
+
+
+def main():
+    pass
+
+
+if __name__ == '__main__':
+    main()

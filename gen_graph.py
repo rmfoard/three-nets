@@ -2,7 +2,7 @@
 """
 import sys
 
-from graph import Graph
+from graph import GeomGraph
 from drawgraph import DrawGraph
 
 
@@ -24,7 +24,7 @@ def main():
     ]
     print(f'rule {rule_int}: {rule}', file=sys.stderr)
 
-    graph_object = Graph(2048)
+    graph_object = GeomGraph(2048)
     edges = graph_object.edges
     colors = graph_object.colors
 
@@ -38,7 +38,7 @@ def main():
     # Run the machine.
     while True:
         # Create the next generation.
-        next_graph_object = Graph(2048)
+        next_graph_object = GeomGraph(2048)
         next_edges = next_graph_object.edges
         next_colors = next_graph_object.colors
         for pt in graph_object.all_hex_points():

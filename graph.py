@@ -1,7 +1,7 @@
 """graph
 """
 
-class Graph (object):
+class GeomGraph (object):
 
     def __init__(self, nr_key_points):
 
