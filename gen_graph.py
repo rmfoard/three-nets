@@ -3,7 +3,7 @@
 from random import random
 import sys
 
-from graph import GeomGraph
+from geom_graph import GeomGraph
 from drawgraph import DrawGraph
 
 
