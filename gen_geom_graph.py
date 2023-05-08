@@ -1,4 +1,4 @@
-"""gen_graph
+"""gen_geom_graph
 """
 from random import random
 import sys
@@ -34,23 +34,23 @@ def main():
     colors[(2, 2)] = 1
     colors[(2, 0)] = 1
     colors[(1, 1)] = 1
-    #for pt in graph_object.all_points():
+    #for pt in graph_object.all_nodes():
     #    colors[pt] = 1 if random() > 0.5 else 0
 
     iter_nr = 0
-    dg = DrawGraph(graph_object, f'Machine hex4 rule {rule_int} iter {iter_nr}')
+    dg = DrawGraph(graph_object, 4, 4, 2, f'Machine hex4 rule {rule_int} iter {iter_nr}')
 
     # Run the machine.
     while True:
         # Create the next generation.
-        next_graph_object = GeomGraph(2048)
+        next_graph_object = GeomGraph(1024)
         next_edges = next_graph_object.edges
         next_colors = next_graph_object.colors
-        for pt in graph_object.all_points():
+        for pt in graph_object.all_nodes():
             neighbor_sum = colors[pt] + colors[edges[pt][0]] + colors[edges[pt][1]] + colors[edges[pt][2]]
             next_colors[pt] = rule[neighbor_sum]
         if (iter_nr % 1) == 0:
-            dg = DrawGraph(next_graph_object, f'Machine hex4 rule {rule_int} iter {iter_nr}')
+            dg = DrawGraph(next_graph_object, 4, 4, 2, f'Machine hex4 rule {rule_int} iter {iter_nr}')
             del dg
         del graph_object
         iter_nr += 1

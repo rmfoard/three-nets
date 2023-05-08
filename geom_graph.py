@@ -33,7 +33,7 @@ class GeomGraph (object):
                 b_nodes.append(a_node)
 
 
-    def all_points(self):
+    def all_nodes(self):
         """Generate all points lying on hexagons."""
         checklist = {}
         for kp in self.key_points(self.nr_key_points):
