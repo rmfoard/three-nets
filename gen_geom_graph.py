@@ -38,7 +38,7 @@ def main():
     #    colors[pt] = 1 if random() > 0.5 else 0
 
     iter_nr = 0
-    dg = DrawGraph(graph_object, 4, 4, 2, f'Machine hex4 rule {rule_int} iter {iter_nr}')
+    dg = DrawGraph(graph_object, 8, 8, 4, f'Machine hex4 rule {rule_int} iter {iter_nr}')
 
     # Run the machine.
     while True:
@@ -50,7 +50,7 @@ def main():
             neighbor_sum = colors[pt] + colors[edges[pt][0]] + colors[edges[pt][1]] + colors[edges[pt][2]]
             next_colors[pt] = rule[neighbor_sum]
         if (iter_nr % 1) == 0:
-            dg = DrawGraph(next_graph_object, 4, 4, 2, f'Machine hex4 rule {rule_int} iter {iter_nr}')
+            dg = DrawGraph(next_graph_object, 8, 8, 4, f'Machine hex4 rule {rule_int} iter {iter_nr}')
             del dg
         del graph_object
         iter_nr += 1
