@@ -4,7 +4,7 @@ from random import random
 import sys
 
 from geom_graph import GeomGraph
-from drawgraph import DrawGraph
+from draw_geom_graph import DrawGeomGraph
 
 
 def main():
@@ -38,7 +38,7 @@ def main():
     #    colors[pt] = 1 if random() > 0.5 else 0
 
     iter_nr = 0
-    dg = DrawGraph(graph_object, 8, 8, 4, f'Machine hex4 rule {rule_int} iter {iter_nr}')
+    dg = DrawGeomGraph(graph_object, 8, 8, 4, f'Machine hex4 rule {rule_int} iter {iter_nr}')
 
     # Run the machine.
     while True:
