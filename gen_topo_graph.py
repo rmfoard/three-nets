@@ -15,7 +15,7 @@ def main():
     print(f'gen_topo_graph  v0.1  03Apr2023', file=sys.stderr)
 
     rule_int = int(sys.argv[1])
-    assert rule_int < 32 and rule_int > 0
+    assert rule_int < 32 and rule_int >= 0
     rule = [
         1 if (rule_int >> 4) & 1 else 0,
         1 if (rule_int >> 3) & 1 else 0,
@@ -38,7 +38,7 @@ def main():
     #    colors[pt] = 1 if random() > 0.5 else 0
 
     iter_nr = 0
-    dg = DrawTopoGraph(graph_object, 6.0, 3, f'Machine hex4 rule {rule_int} iter {iter_nr}')
+    dg = DrawTopoGraph(graph_object, 7.0, 2, f'Machine hex4 rule {rule_int} iter {iter_nr}')
 
     # Run the machine.
     while True:
