@@ -11,10 +11,16 @@ def main():
     s = float(sys.argv[3])
 
     root3_2 = math.sqrt(3) / 2.0
-    scale = 5.0
+    scale = 1.0
 
     x = scale * (r + q/2.0 + s/2.0)
     y = scale * (q * root3_2 - s * root3_2)
+
+    x2 = r * 1.5 + q
+    y2 = r * root3_2
+
+    print(f'x, x2: {x} ? {x2}')
+    print(f'y, y2: {y} ? {y2}')
 
     print(f'(q, r, s) = ({q}, {r}, {s}) ==> (x, y) = ({x}, {y})')
 
